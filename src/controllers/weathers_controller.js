@@ -1,40 +1,26 @@
 const Weather = require("../model/weather");
 
 exports.createWeathers = (req, res) => {
-  if (req.headers.main != 123123)
+  if (req.headers.main != process.env.KEY_PASS)
     return res.status(400).json("You can't create weather")
   const {
     country,
-    lon,
-    lat,
-    main,
-    description,
+    year,
+    month,
     temp,
-    feels_like,
-    temp_min,
-    temp_max,
-    pressure,
     humidity,
+    rainfall,
+    wind_speed
   } = req.body;
 
   const weather = new Weather({
     country: country,
-    coord: {
-      lon: lon,
-      lat: lat,
-    },
-    weather: {
-      main: main,
-      description: description,
-    },
-    main: {
-      temp: temp,
-      feels_like: feels_like,
-      temp_min: temp_min,
-      temp_max: temp_max,
-      pressure: pressure,
-      humidity: humidity,
-    },
+    year: year,
+    month: month,
+    temp: temp,
+    humidity: humidity,
+    rainfall: rainfall,
+    wind_speed: wind_speed
   });
 
   weather.save((error, weather) => {
