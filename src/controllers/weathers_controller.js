@@ -41,7 +41,8 @@ exports.getWeathers = async (req, res) => {
     weathers.push(weather3);
     weathers.push(weather4);
     weathers.push(weather5);
-    res.status(200).json({ weathers });
+    weathers_flated = weathers.flat();
+    res.status(200).json({ weathers_flated });
   } catch (e) {
     res.status(404).json({ e });
   }
