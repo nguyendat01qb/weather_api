@@ -12,4 +12,4 @@ const weatherSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Weather", weatherSchema);
+module.exports = mongoose.model("Weather1", weatherSchema);
